@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.FrontendEvents" parent="Base.Theme.FrontendEvents" />
+    <style name="Theme.FrontendEvents.Splash" parent="Base.Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/pink</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.FrontendEvents</item>
+    </style>
+
+
 </resources>
