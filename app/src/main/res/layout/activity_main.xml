@@ -7,13 +7,123 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="144dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="34dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:srcCompat="@drawable/onboarding4" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="144dp"
+        android:layout_height="250dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="34dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:srcCompat="@drawable/onboarding5" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="170dp"
+        android:layout_height="230dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/onboarding3" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="144dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageView18"
+        app:layout_constraintStart_toEndOf="@+id/imageView20"
+        app:srcCompat="@drawable/onboarding6" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="144dp"
+        android:layout_height="320dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageView19"
+        app:layout_constraintEnd_toStartOf="@+id/imageView20"
+        app:srcCompat="@drawable/onboarding7" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/startBtn"
+        style="@android:style/Widget.Holo.Button.Borderless"
+        android:layout_width="335dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/main_button"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Find your favourite\nevents here"
+        android:textAlignment="center"
+        android:textColor="@color/txt_color1"
+        android:textFontWeight="700"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/poppins"
+        android:text="Lorem ipsum dolor sit amet, consectetur\nadipiscing elit."
+        android:textAlignment="center"
+        android:textColor="#8B8688"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="170dp"
+        android:layout_height="340dp"
+        android:layout_marginBottom="34dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/onboarding1" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="44dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/main_button"
+        app:layout_constraintBottom_toTopOf="@+id/startBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
