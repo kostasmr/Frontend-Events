@@ -7,4 +7,5 @@
     <color name="btn_color2">#FB0160</color>
     <color name="txt_color1">#25131A</color>
     <color name="txt_color2">#6725131A</color>
+    <color name="price_button">#0CFB0160</color>
 </resources>
