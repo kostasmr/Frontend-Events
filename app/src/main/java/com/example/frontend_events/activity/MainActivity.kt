@@ -1,12 +1,11 @@
-package com.example.frontend_events
+package com.example.frontend_events.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.frontend_events.R
 
 class MainActivity : AppCompatActivity() {
 
