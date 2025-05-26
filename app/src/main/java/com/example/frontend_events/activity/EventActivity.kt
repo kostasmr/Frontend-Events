@@ -15,8 +15,6 @@ class EventActivity : AppCompatActivity() {
 
         val event = intent.getSerializableExtra("event") as Event
 
-        println(event)
-
         val imageView = findViewById<ImageView>(R.id.imageView)
         val titleView = findViewById<TextView>(R.id.title_details)
         val dateView = findViewById<TextView>(R.id.date_details)

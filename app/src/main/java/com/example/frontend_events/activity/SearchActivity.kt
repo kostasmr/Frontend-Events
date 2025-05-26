@@ -2,32 +2,38 @@ package com.example.frontend_events.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.EditorInfo
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.frontend_events.Adapter
-import com.example.frontend_events.RecomAdapter
 import com.example.frontend_events.R
 import com.example.frontend_events.SearchAdapter
 import com.example.frontend_events.models.Event
 
-class HomeActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity() {
+
+    private lateinit var allEvents: List<Event>
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: SearchAdapter
+    private lateinit var searchEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_search)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.popular_list)
-        val recom_list = findViewById<RecyclerView>(R.id.recom_list)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recom_list.layoutManager = LinearLayoutManager(this)
+        recyclerView = findViewById(R.id.search_list)
+        searchEditText = findViewById(R.id.search_text)
 
+        val query = intent.getStringExtra("query") ?: ""
+        searchEditText.setText(query)
 
-        val events = listOf(
+        allEvents = listOf(
             Event(
                 R.drawable.popular1,
                 "Going to a Rock Concert",
@@ -63,40 +69,44 @@ class HomeActivity : AppCompatActivity() {
             ),
         )
 
-        val popular_events = listOf(events[0],events[1])
-        val recom_events = listOf(events[2],events[3])
-        val search_events = listOf(events[1],events[2],events[3])
-
-        val adapter = Adapter(popular_events) { selectedEvent ->
-            val intent = Intent(this, EventActivity::class.java)
-            intent.putExtra("event", selectedEvent)
-            startActivity(intent)
-        }
-        val recomAdapter = RecomAdapter(recom_events) { selectedEvent ->
-            val intent = Intent(this, EventActivity::class.java)
-            intent.putExtra("event", selectedEvent)
-            startActivity(intent)
+        val filtered = allEvents.filter {
+            it.title.contains(query, ignoreCase = true) ||
+                    it.location.contains(query, ignoreCase = true) ||
+                    it.date.contains(query, ignoreCase = true)
         }
 
+        if (filtered.isEmpty()) {
+            val noResultsText = findViewById<TextView>(R.id.noResultsText)
+            noResultsText.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
+        }
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = SearchAdapter(filtered.toMutableList())
         recyclerView.adapter = adapter
-        recom_list.adapter = recomAdapter
 
-        val searchEditText = findViewById<EditText>(R.id.search_input)
-
-        searchEditText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE) {
-                val query = searchEditText.text.toString()
-                val intent = Intent(this, SearchActivity::class.java)
-                intent.putExtra("query", query)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                startActivity(intent)
-                searchEditText.setText("")
-                true
-            } else {
-                false
+        fun filterEvents(query: String) {
+            val filtered = allEvents.filter {
+                it.title.contains(query, ignoreCase = true) ||
+                        it.location.contains(query, ignoreCase = true) ||
+                        it.date.contains(query, ignoreCase = true)
             }
+
+            adapter.updateData(filtered)
+
+            val noResultsText = findViewById<TextView>(R.id.noResultsText)
+            noResultsText.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
         }
+
+        searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val query = s.toString()
+                filterEvents(query)
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
     }
 }
-

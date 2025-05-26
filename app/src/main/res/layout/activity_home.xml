@@ -54,7 +54,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editTextText"
+                    android:id="@+id/search_input"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="20dp"
@@ -65,6 +65,7 @@
                     android:ems="10"
                     android:hint="Search for a event, venue or region"
                     android:inputType="text"
+                    android:imeOptions="actionSearch"
                     android:paddingStart="20dp"
                     android:textColor="@color/txt_color2"
                     android:textSize="14dp" />
@@ -202,14 +203,12 @@
                     android:id="@+id/popular_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="30dp"
-                    android:clipToPadding="false"
-                    android:scrollbars="horizontal"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
                     android:clickable="true"
+                    android:clipToPadding="false"
                     android:focusable="true"
-                    />
+                    android:scrollbars="horizontal" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
