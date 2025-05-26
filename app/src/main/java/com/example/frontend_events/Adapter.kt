@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.frontend_events.models.Popular
+import com.example.frontend_events.models.Event
 
-class Adapter(private val events: List<Popular>) : RecyclerView.Adapter<Adapter.PopularViewHolder>(){
+class Adapter(private val events: List<Event>, private val onItemClick: (Event) -> Unit) : RecyclerView.Adapter<Adapter.PopularViewHolder>(){
 
     inner class PopularViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.event_image)
@@ -16,6 +16,12 @@ class Adapter(private val events: List<Popular>) : RecyclerView.Adapter<Adapter.
         val date: TextView = itemView.findViewById(R.id.event_date)
         val location: TextView = itemView.findViewById(R.id.event_location)
         val price: TextView = itemView.findViewById(R.id.event_price)
+
+        fun bind(event: Event) {
+            itemView.setOnClickListener {
+                onItemClick(event)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularViewHolder {
@@ -31,6 +37,8 @@ class Adapter(private val events: List<Popular>) : RecyclerView.Adapter<Adapter.
         holder.date.text = event.date
         holder.location.text = event.location
         holder.price.text = event.price
+
+        holder.bind(event)
     }
 
     override fun getItemCount(): Int = events.size
