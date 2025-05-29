@@ -65,7 +65,6 @@ class HomeActivity : AppCompatActivity() {
 
         val popular_events = listOf(events[0],events[1])
         val recom_events = listOf(events[2],events[3])
-        val search_events = listOf(events[1],events[2],events[3])
 
         val adapter = Adapter(popular_events) { selectedEvent ->
             val intent = Intent(this, EventActivity::class.java)
