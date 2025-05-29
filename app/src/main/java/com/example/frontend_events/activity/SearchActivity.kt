@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.frontend_events.R
+import com.example.frontend_events.RecomAdapter
 import com.example.frontend_events.SearchAdapter
 import com.example.frontend_events.models.Event
 
@@ -22,6 +23,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: SearchAdapter
     private lateinit var searchEditText: EditText
+    private var query: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,8 @@ class SearchActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.search_list)
         searchEditText = findViewById(R.id.search_text)
 
-        val query = intent.getStringExtra("query") ?: ""
+
+        query = intent.getStringExtra("query") ?: ""
         searchEditText.setText(query)
 
         allEvents = listOf(
@@ -81,7 +84,13 @@ class SearchActivity : AppCompatActivity() {
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = SearchAdapter(filtered.toMutableList())
+        adapter = SearchAdapter(filtered.toMutableList()) { selectedEvent ->
+            val intent = Intent(this, EventActivity::class.java)
+            intent.putExtra("event", selectedEvent)
+            intent.putExtra("origin", "search")
+            intent.putExtra("query", query)
+            startActivity(intent)
+        }
         recyclerView.adapter = adapter
 
         fun filterEvents(query: String) {
@@ -101,7 +110,7 @@ class SearchActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val query = s.toString()
+                query = s.toString()
                 filterEvents(query)
             }
 

@@ -69,6 +69,7 @@ class HomeActivity : AppCompatActivity() {
         val adapter = Adapter(popular_events) { selectedEvent ->
             val intent = Intent(this, EventActivity::class.java)
             intent.putExtra("event", selectedEvent)
+            intent.putExtra("origin", "home")
             startActivity(intent)
         }
         val recomAdapter = RecomAdapter(recom_events) { selectedEvent ->

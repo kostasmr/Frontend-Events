@@ -32,10 +32,21 @@ class EventActivity : AppCompatActivity() {
         orgView.text = event.organizers
 
         val btn = findViewById<ImageView>(R.id.backBtn)
+        val origin = intent.getStringExtra("origin")
+        val query = intent.getStringExtra("query")
 
         btn.setOnClickListener {
-            val intent = Intent(this@EventActivity, HomeActivity::class.java)
-            startActivity(intent)
+            when (origin) {
+                "search" -> {
+                    val intent = Intent(this, SearchActivity::class.java)
+                    intent.putExtra("query", query)
+                    startActivity(intent)
+                }
+                else -> {
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                }
+            }
             finish()
         }
 

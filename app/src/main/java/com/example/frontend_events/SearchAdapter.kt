@@ -9,13 +9,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.frontend_events.models.Event
 
-class SearchAdapter (private val events: List<Event>) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
+class SearchAdapter (private val events: List<Event>, private val onItemClick: (Event) -> Unit) : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
     inner class SearchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.search_image)
         val title: TextView = itemView.findViewById(R.id.search_title)
         val location: TextView = itemView.findViewById(R.id.search_location)
         val date: TextView = itemView.findViewById(R.id.search_date)
 
+        fun bind(event: Event) {
+            itemView.setOnClickListener {
+                onItemClick(event)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -30,6 +35,8 @@ class SearchAdapter (private val events: List<Event>) : RecyclerView.Adapter<Sea
         holder.title.text = event.title
         holder.location.text = event.location
         holder.date.text = event.date
+
+        holder.bind(event)
     }
 
     override fun getItemCount(): Int = events.size
