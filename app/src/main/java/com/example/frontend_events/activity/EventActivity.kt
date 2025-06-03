@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.frontend_events.R
 import com.example.frontend_events.models.Event
 
@@ -23,13 +24,15 @@ class EventActivity : AppCompatActivity() {
         val descrView = findViewById<TextView>(R.id.descr_details)
         val orgView = findViewById<TextView>(R.id.org_details)
 
-        imageView.setImageResource(event.imageId)
+        Glide.with(this)
+            .load(event.image)
+            .into(imageView)
         titleView.text = event.title
-        dateView.text = event.date
-        locationView.text = event.location
-        priceView.text = event.price
+        dateView.text = event.schedule[0].date
+        locationView.text = event.schedule[0].location
+        priceView.text = String.format("$%02d.00", event.ticketTypes[0].price)
         descrView.text = event.description
-        orgView.text = event.organizers
+        orgView.text = event.organizer
 
         val btn = findViewById<ImageView>(R.id.backBtn)
         val origin = intent.getStringExtra("origin")

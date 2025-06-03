@@ -2,18 +2,26 @@ package com.example.frontend_events.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.frontend_events.Adapter
-import com.example.frontend_events.RecomAdapter
+import com.example.frontend_events.adapters.Adapter
+import com.example.frontend_events.ApiInterface
+import com.example.frontend_events.adapters.RecomAdapter
 import com.example.frontend_events.R
-import com.example.frontend_events.SearchAdapter
 import com.example.frontend_events.models.Event
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.io.Serializable
+
+const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
+//const val BASE_URL = "http://10.0.2.2:8080/api/"
 
 class HomeActivity : AppCompatActivity() {
 
@@ -21,65 +29,38 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.popular_list)
-        val recom_list = findViewById<RecyclerView>(R.id.recom_list)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recom_list.layoutManager = LinearLayoutManager(this)
+        val popularView = findViewById<RecyclerView>(R.id.popular_list)
+        val recomView = findViewById<RecyclerView>(R.id.recom_list)
+        popularView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recomView.layoutManager = LinearLayoutManager(this)
 
 
-        val events = listOf(
-            Event(
-                R.drawable.popular1,
-                "Going to a Rock Concert",
-                "Thursday 10 July",
-                "Athens",
-                "$03.00",
-                "We have a team but still missing a couple of people.Let's play together! We have a team but still missing a couple of people. Let's play together! We have a team but still missing a couple of people.",
-                "Nikos Minos"
-            ),
-            Event(R.drawable.popular2,
-                "Food Festival",
-                "Friday 11 July",
-                "Thessaloniki",
-                "$05.00",
-                "We have a team but still missing a couple of people.Let's play together! We have a team but still missing a couple of people. Let's play together! We have a team but still missing a couple of people.",
-                "John Made"
-            ),
-            Event(R.drawable.img_recom1,
-                "Food Festival",
-                "Friday 11 July",
-                "Thessaloniki",
-                "$05.00",
-                "We have a team but still missing a couple of people.Let's play together! We have a team but still missing a couple of people. Let's play together! We have a team but still missing a couple of people.",
-                "John Made"
-            ),
-            Event(R.drawable.img_recom2,
-                "Food Festival",
-                "Friday 11 July",
-                "Thessaloniki",
-                "$05.00",
-                "We have a team but still missing a couple of people.Let's play together! We have a team but still missing a couple of people. Let's play together! We have a team but still missing a couple of people.",
-                "John Made"
-            ),
-        )
-
-        val popular_events = listOf(events[0],events[1])
-        val recom_events = listOf(events[2],events[3])
-
-        val adapter = Adapter(popular_events) { selectedEvent ->
+        val adapter = Adapter(emptyList()) { selectedEvent ->
             val intent = Intent(this, EventActivity::class.java)
-            intent.putExtra("event", selectedEvent)
+            intent.putExtra("event", selectedEvent as Serializable)
             intent.putExtra("origin", "home")
             startActivity(intent)
         }
-        val recomAdapter = RecomAdapter(recom_events) { selectedEvent ->
+        val recomAdapter = RecomAdapter(emptyList()) { selectedEvent ->
             val intent = Intent(this, EventActivity::class.java)
-            intent.putExtra("event", selectedEvent)
+            intent.putExtra("event", selectedEvent as Serializable)
             startActivity(intent)
         }
 
-        recyclerView.adapter = adapter
-        recom_list.adapter = recomAdapter
+        popularView.adapter = adapter
+        recomView.adapter = recomAdapter
+
+        // Load data
+        getMyData { events ->
+            if (events.isNotEmpty()) {
+                var popular = listOf(events[0],events[1])
+                adapter.updateData(popular)
+                var recom = listOf(events[2],events[3],events[4],events[5])
+                recomAdapter.updateData(recom)
+            } else {
+                Log.d("MainActivity", "No events received")
+            }
+        }
 
         val searchEditText = findViewById<EditText>(R.id.search_input)
 
@@ -98,5 +79,32 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
+    fun getMyData(onResult: (List<Event>) -> Unit){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiInterface::class.java)
+
+        val retrofitData = retrofitBuilder.getData()
+
+        retrofitData.enqueue(object: Callback<List<Event>>{
+            override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
+                val events = response.body()
+                if (!events.isNullOrEmpty()) {
+                    onResult(events)
+                } else {
+                    onResult(emptyList())
+                }
+            }
+
+            override fun onFailure(call: Call<List<Event>>, t: Throwable) {
+                Log.d("HomeActivity", "onFailure: ${t.message}")
+                onResult(emptyList())
+            }
+        })
+    }
 }
+
 

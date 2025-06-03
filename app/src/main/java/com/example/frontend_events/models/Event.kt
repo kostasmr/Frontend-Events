@@ -1,12 +1,20 @@
 package com.example.frontend_events.models
+
+import com.example.frontend_events.models.Schedule
+import com.example.frontend_events.models.TicketType
 import java.io.Serializable
 
-class Event(
-    val imageId: Int,
-    val title: String,
-    val date: String,
-    val location: String,
-    val price: String,
+data class Event(
+    val __v: Int,
+    val _id: String,
+    val category: String,
+    val createdAt: String,
     val description: String,
-    val organizers: String
-    ) : Serializable
+    val image: String,
+    val organizer: String,
+    val schedule: List<Schedule>,
+    val tags: List<String>,
+    val ticketTypes: List<TicketType>,
+    val title: String,
+    val updatedAt: String
+): Serializable
