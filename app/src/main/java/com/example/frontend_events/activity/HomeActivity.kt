@@ -58,7 +58,7 @@ class HomeActivity : AppCompatActivity() {
                 var recom = listOf(events[2],events[3],events[4],events[5])
                 recomAdapter.updateData(recom)
             } else {
-                Log.d("MainActivity", "No events received")
+                Log.d("HomeActivity", "No events received")
             }
         }
 
@@ -88,6 +88,7 @@ class HomeActivity : AppCompatActivity() {
             .create(ApiInterface::class.java)
 
         val retrofitData = retrofitBuilder.getData()
+
 
         retrofitData.enqueue(object: Callback<List<Event>>{
             override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
