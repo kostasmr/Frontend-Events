@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Spinner για έκπτωση -->
+    <string-array name="discount_categories">
+        <item>None</item>
+        <item>Unemployed</item>
+        <item>Student</item>
+        <item>Special Need Person</item>
+    </string-array>
+</resources>
