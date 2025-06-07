@@ -13,7 +13,7 @@ class EventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
-
+    //dates
         val event = intent.getSerializableExtra("event") as Event
 
         val imageView = findViewById<ImageView>(R.id.imageView)
