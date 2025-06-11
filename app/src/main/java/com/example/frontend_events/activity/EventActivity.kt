@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.example.frontend_events.R
 import com.example.frontend_events.models.Event
@@ -51,6 +52,13 @@ class EventActivity : AppCompatActivity() {
                 }
             }
             finish()
+        }
+
+        val buyBtn = findViewById<ConstraintLayout>(R.id.buyBtn)
+        buyBtn.setOnClickListener {
+            val intent = Intent(this@EventActivity, OrderDetailActivity::class.java)
+            intent.putExtra("event", event)
+            startActivity(intent)
         }
 
     }
