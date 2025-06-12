@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         next = findViewById(R.id.startBtn)
 
         next.setOnClickListener {
-            val intent = Intent(this@MainActivity, HomeActivity::class.java)
+            val intent = Intent(this@MainActivity, SelectCategoryAvtivity::class.java)
             startActivity(intent)
             finish()
         }
