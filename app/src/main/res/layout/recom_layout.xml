@@ -65,7 +65,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imgConcert"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
