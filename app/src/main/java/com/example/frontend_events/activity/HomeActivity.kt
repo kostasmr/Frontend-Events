@@ -20,14 +20,18 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.Serializable
 
-const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
-//const val BASE_URL = "http://10.0.2.2:8080/api/"
+//const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
+const val BASE_URL = "http://10.0.2.2:8080/api/"
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var recomCategories: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        recomCategories = intent.getStringArrayListExtra("selectedCategories") ?: arrayListOf()
 
         val popularView = findViewById<RecyclerView>(R.id.popular_list)
         val recomView = findViewById<RecyclerView>(R.id.recom_list)
@@ -50,15 +54,25 @@ class HomeActivity : AppCompatActivity() {
         popularView.adapter = adapter
         recomView.adapter = recomAdapter
 
-        // Load data
+        // Load all events
         getMyData { events ->
             if (events.isNotEmpty()) {
                 var popular = listOf(events[0],events[1])
                 adapter.updateData(popular)
-                var recom = listOf(events[2],events[3],events[4],events[5])
-                recomAdapter.updateData(recom)
+//                var recom = listOf(events[2],events[3],events[4],events[5])
+//                recomAdapter.updateData(recom)
             } else {
                 Log.d("HomeActivity", "No events received")
+            }
+        }
+
+        // Load recommendation events
+        getMyRecomEvents { recomEvents ->
+            if (recomEvents.isNotEmpty()) {
+                var recom = recomEvents
+                recomAdapter.updateData(recom)
+            } else {
+                Log.d("HomeActivity", "No recommendation events received")
             }
         }
 
@@ -88,6 +102,33 @@ class HomeActivity : AppCompatActivity() {
             .create(ApiInterface::class.java)
 
         val retrofitData = retrofitBuilder.getData()
+
+
+        retrofitData.enqueue(object: Callback<List<Event>>{
+            override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
+                val events = response.body()
+                if (!events.isNullOrEmpty()) {
+                    onResult(events)
+                } else {
+                    onResult(emptyList())
+                }
+            }
+
+            override fun onFailure(call: Call<List<Event>>, t: Throwable) {
+                Log.d("HomeActivity", "onFailure: ${t.message}")
+                onResult(emptyList())
+            }
+        })
+    }
+
+    fun getMyRecomEvents(onResult: (List<Event>) -> Unit){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiInterface::class.java)
+
+        val retrofitData = retrofitBuilder.getRecomEvents(recomCategories)
 
 
         retrofitData.enqueue(object: Callback<List<Event>>{
