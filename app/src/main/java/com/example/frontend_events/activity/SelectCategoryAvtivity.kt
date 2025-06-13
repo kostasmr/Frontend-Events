@@ -6,6 +6,8 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import com.example.frontend_events.R
+import kotlin.collections.remove
+import kotlin.text.contains
 
 class SelectCategoryAvtivity : AppCompatActivity() {
 
@@ -18,6 +20,15 @@ class SelectCategoryAvtivity : AppCompatActivity() {
         var isSelected = false
         val selected_categories = mutableListOf<String>()
 
+        fun catOnClick(category: String, layout: LinearLayout){
+            if (!selected_categories.contains(category)) {
+                selected_categories.add(category)
+                layout.setBackgroundResource(R.drawable.selected_category_shape)
+            } else {
+                selected_categories.remove(category)
+                layout.setBackgroundResource(R.drawable.main_shape)
+            }
+        }
 
         val cat1 = findViewById<LinearLayout>(R.id.concert_layout)
         val cat2 = findViewById<LinearLayout>(R.id.theater_layout)
@@ -30,87 +41,33 @@ class SelectCategoryAvtivity : AppCompatActivity() {
         val cat9 = findViewById<LinearLayout>(R.id.exhibition_layout)
 
         cat1.setOnClickListener {
-            if (!selected_categories.contains("Concert")) {
-                selected_categories.add("Concert")
-                cat1.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Concert")
-                cat1.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Concert", cat1)
         }
-
         cat2.setOnClickListener {
-            if (!selected_categories.contains("Theater")) {
-                selected_categories.add("Theater")
-                cat2.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Theater")
-                cat2.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Theater", cat2)
         }
         cat3.setOnClickListener {
-            if (!selected_categories.contains("Sports")) {
-                selected_categories.add("Sports")
-                cat3.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Sports")
-                cat3.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Sports", cat3)
         }
         cat4.setOnClickListener {
-            if (!selected_categories.contains("Festival")) {
-                selected_categories.add("Festival")
-                cat4.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Festival")
-                cat4.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Festival", cat4)
         }
         cat5.setOnClickListener {
-            if (!selected_categories.contains("Conference")) {
-                selected_categories.add("Conference")
-                cat5.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Conference")
-                cat5.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Conference", cat5)
         }
         cat6.setOnClickListener {
-            if (!selected_categories.contains("Workshop")) {
-                selected_categories.add("Workshop")
-                cat6.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Workshop")
-                cat6.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Workshop", cat6)
         }
         cat7.setOnClickListener {
-            if (!selected_categories.contains("Comedy")) {
-                selected_categories.add("Comedy")
-                cat7.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Comedy")
-                cat7.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Comedy", cat7)
         }
         cat8.setOnClickListener {
-            if (!selected_categories.contains("Movie")) {
-                selected_categories.add("Movie")
-                cat8.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Movie")
-                cat8.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Movie", cat8)
         }
         cat9.setOnClickListener {
-            if (!selected_categories.contains("Exhibition")) {
-                selected_categories.add("Exhibition")
-                cat9.setBackgroundResource(R.drawable.selected_category_shape)
-            } else {
-                selected_categories.remove("Exhibition")
-                cat9.setBackgroundResource(R.drawable.main_shape)
-            }
+            catOnClick("Exhibition", cat9)
         }
+
         next = findViewById(R.id.startBtn)
 
         next.setOnClickListener {
