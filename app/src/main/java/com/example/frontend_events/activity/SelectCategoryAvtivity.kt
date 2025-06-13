@@ -18,14 +18,14 @@ class SelectCategoryAvtivity : AppCompatActivity() {
         setContentView(R.layout.activity_select_category)
 
         var isSelected = false
-        val selected_categories = mutableListOf<String>()
+        val selectedCategories = mutableListOf<String>()
 
         fun catOnClick(category: String, layout: LinearLayout){
-            if (!selected_categories.contains(category)) {
-                selected_categories.add(category)
+            if (!selectedCategories.contains(category)) {
+                selectedCategories.add(category)
                 layout.setBackgroundResource(R.drawable.selected_category_shape)
             } else {
-                selected_categories.remove(category)
+                selectedCategories.remove(category)
                 layout.setBackgroundResource(R.drawable.main_shape)
             }
         }
@@ -41,37 +41,38 @@ class SelectCategoryAvtivity : AppCompatActivity() {
         val cat9 = findViewById<LinearLayout>(R.id.exhibition_layout)
 
         cat1.setOnClickListener {
-            catOnClick("Concert", cat1)
+            catOnClick("concert", cat1)
         }
         cat2.setOnClickListener {
-            catOnClick("Theater", cat2)
+            catOnClick("theater", cat2)
         }
         cat3.setOnClickListener {
-            catOnClick("Sports", cat3)
+            catOnClick("sports", cat3)
         }
         cat4.setOnClickListener {
-            catOnClick("Festival", cat4)
+            catOnClick("festival", cat4)
         }
         cat5.setOnClickListener {
-            catOnClick("Conference", cat5)
+            catOnClick("conference", cat5)
         }
         cat6.setOnClickListener {
-            catOnClick("Workshop", cat6)
+            catOnClick("workshop", cat6)
         }
         cat7.setOnClickListener {
-            catOnClick("Comedy", cat7)
+            catOnClick("comedy", cat7)
         }
         cat8.setOnClickListener {
-            catOnClick("Movie", cat8)
+            catOnClick("movie", cat8)
         }
         cat9.setOnClickListener {
-            catOnClick("Exhibition", cat9)
+            catOnClick("exhibition", cat9)
         }
 
         next = findViewById(R.id.startBtn)
 
         next.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            intent.putStringArrayListExtra("selectedCategories", ArrayList(selectedCategories))
             startActivity(intent)
             finish()
         }
