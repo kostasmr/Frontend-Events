@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,13 @@ class SearchActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.search_list)
         searchEditText = findViewById(R.id.search_text)
 
+        val btn = findViewById<ImageView>(R.id.backBtn)
+
+        btn.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         query = intent.getStringExtra("query") ?: ""
         searchEditText.setText(query)
@@ -56,31 +64,22 @@ class SearchActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         getMyData { events ->
-            if (events.isNotEmpty()) {
+            fun filterEvents(query: String) {
                 val filtered = events.filter {
                     it.title.contains(query, ignoreCase = true) ||
                             it.schedule[0].location.contains(query, ignoreCase = true) ||
-                            it.schedule[0].date.contains(query, ignoreCase = true)
+                            it.schedule[0].date.contains(query, ignoreCase = true) ||
+                            it.category.equals(query, ignoreCase = true)
                 }
 
-                if (filtered.isEmpty()) {
-                    val noResultsText = findViewById<TextView>(R.id.noResultsText)
-                    noResultsText.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
-                }
+                val noResultsText = findViewById<TextView>(R.id.noResultsText)
+                noResultsText.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
+
                 adapter.updateData(filtered)
+            }
 
-                fun filterEvents(query: String) {
-                    val filtered = events.filter {
-                        it.title.contains(query, ignoreCase = true) ||
-                                it.schedule[0].location.contains(query, ignoreCase = true) ||
-                                it.schedule[0].date.contains(query, ignoreCase = true)
-                    }
-
-                    adapter.updateData(filtered)
-
-                    val noResultsText = findViewById<TextView>(R.id.noResultsText)
-                    noResultsText.visibility = if (filtered.isEmpty()) View.VISIBLE else View.GONE
-                }
+            if (events.isNotEmpty()) {
+                filterEvents(query)
 
                 searchEditText.addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -90,7 +89,8 @@ class SearchActivity : AppCompatActivity() {
                         filterEvents(query)
                     }
 
-                    override fun afterTextChanged(s: Editable?) {}
+                    override fun afterTextChanged(s: Editable?) {
+                    }
                 })
 
             } else {
