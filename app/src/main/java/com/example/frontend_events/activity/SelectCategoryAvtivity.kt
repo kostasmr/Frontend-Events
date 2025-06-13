@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import com.example.frontend_events.AppState
 import com.example.frontend_events.R
 import kotlin.collections.remove
 import kotlin.text.contains
@@ -72,7 +73,7 @@ class SelectCategoryAvtivity : AppCompatActivity() {
 
         next.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
-            intent.putStringArrayListExtra("selectedCategories", ArrayList(selectedCategories))
+            AppState.recomCategories = ArrayList(selectedCategories)
             startActivity(intent)
             finish()
         }
