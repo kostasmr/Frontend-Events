@@ -89,26 +89,28 @@
                             android:orientation="horizontal"
                             android:background="@drawable/main_shape"
                             android:gravity="center_vertical"
-                            android:layout_marginEnd="10dp"
-                            >
+                            android:layout_marginEnd="10dp">
+
                             <ImageView
                                 android:layout_width="17dp"
                                 android:layout_height="24dp"
-                                app:srcCompat="@drawable/ic_studio_microphone"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="20dp"
-                                />
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_concert" />
+
                             <TextView
-                                android:id="@+id/textView14"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:drawablePadding="10dp"
-                                android:fontFamily="@font/poppins"
                                 android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
                                 android:paddingEnd="20dp"
-                                android:paddingVertical="10dp"
-                                android:text="Music"
-                                android:textSize="14dp" />
+                                android:text="Concert"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -117,26 +119,30 @@
                             android:orientation="horizontal"
                             android:background="@drawable/main_shape"
                             android:gravity="center_vertical"
-                            android:layout_marginEnd="10dp"
-                            >
+                            android:layout_marginEnd="10dp">
+
                             <ImageView
+                                android:id="@+id/imgTheater"
                                 android:layout_width="17dp"
                                 android:layout_height="24dp"
-                                app:srcCompat="@drawable/ic_books"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="20dp"
-                                />
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_theater" />
+
                             <TextView
-                                android:id="@+id/textView13"
-                                android:layout_width="match_parent"
+                                android:id="@+id/theater"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:background="@drawable/main_shape"
-                                android:fontFamily="@font/poppins"
                                 android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
                                 android:paddingEnd="20dp"
-                                android:paddingVertical="10dp"
-                                android:text="Education"
-                                android:textSize="14dp" />
+                                android:text="Theater"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -145,27 +151,223 @@
                             android:orientation="horizontal"
                             android:background="@drawable/main_shape"
                             android:gravity="center_vertical"
-                            android:layout_marginEnd="20dp"
-                            >
+                            android:layout_marginEnd="10dp">
+
                             <ImageView
+                                android:id="@+id/imgSports"
                                 android:layout_width="17dp"
                                 android:layout_height="24dp"
-                                app:srcCompat="@drawable/ic_film_frames"
+                                android:layout_gravity="center_vertical"
                                 android:layout_marginStart="20dp"
-                                />
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_sports" />
+
                             <TextView
-                                android:id="@+id/textView15"
-                                android:layout_width="match_parent"
+                                android:id="@+id/sports"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:background="@drawable/main_shape"
-                                android:fontFamily="@font/poppins"
                                 android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
                                 android:paddingEnd="20dp"
-                                android:paddingVertical="10dp"
-                                android:text="Film &amp; Media"
-                                android:textSize="14dp" />
+                                android:text="Sports"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@drawable/main_shape"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp">
+
+                            <ImageView
+                                android:id="@+id/imgFestival"
+                                android:layout_width="17dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_festival" />
+
+                            <TextView
+                                android:id="@+id/festival"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
+                                android:paddingEnd="20dp"
+                                android:text="Festival"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@drawable/main_shape"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp">
+
+                            <ImageView
+                                android:id="@+id/imgConference"
+                                android:layout_width="17dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_conference" />
+
+                            <TextView
+                                android:id="@+id/conference"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
+                                android:paddingEnd="20dp"
+                                android:text="Conference"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@drawable/main_shape"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp">
+
+                            <ImageView
+                                android:id="@+id/imgComedy"
+                                android:layout_width="17dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_comedy" />
+
+                            <TextView
+                                android:id="@+id/comedy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
+                                android:paddingEnd="20dp"
+                                android:text="Comedy"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@drawable/main_shape"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp">
+
+                            <ImageView
+                                android:id="@+id/imgWorkshop"
+                                android:layout_width="17dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_workshop" />
+
+                            <TextView
+                                android:id="@+id/workshop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
+                                android:paddingEnd="20dp"
+                                android:text="Workshop"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@drawable/main_shape"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="10dp">
+
+                            <ImageView
+                                android:id="@+id/imgExhibition"
+                                android:layout_width="17dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_exhibition" />
+
+                            <TextView
+                                android:id="@+id/exhibition"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
+                                android:paddingEnd="20dp"
+                                android:text="Exhibition"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp"
+                                tools:paddingEnd="20dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@drawable/main_shape"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="20dp">
+
+                            <ImageView
+                                android:id="@+id/imgMovie"
+                                android:layout_width="17dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/ic_movie" />
+
+                            <TextView
+                                android:id="@+id/movie"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/poppins"
+                                android:paddingVertical="8dp"
+                                android:paddingEnd="20dp"
+                                android:text="Movie"
+                                android:textColor="@color/txt_color1"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
                     </LinearLayout>
                 </HorizontalScrollView>
 
