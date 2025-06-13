@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.frontend_events.adapters.Adapter
 import com.example.frontend_events.ApiInterface
+import com.example.frontend_events.AppState
 import com.example.frontend_events.adapters.RecomAdapter
 import com.example.frontend_events.R
 import com.example.frontend_events.models.Event
@@ -30,8 +32,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        recomCategories = intent.getStringArrayListExtra("selectedCategories") ?: arrayListOf()
 
         val popularView = findViewById<RecyclerView>(R.id.popular_list)
         val recomView = findViewById<RecyclerView>(R.id.recom_list)
@@ -59,8 +59,6 @@ class HomeActivity : AppCompatActivity() {
             if (events.isNotEmpty()) {
                 var popular = listOf(events[0],events[1])
                 adapter.updateData(popular)
-//                var recom = listOf(events[2],events[3],events[4],events[5])
-//                recomAdapter.updateData(recom)
             } else {
                 Log.d("HomeActivity", "No events received")
             }
@@ -76,6 +74,7 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
+        // Search Input
         val searchEditText = findViewById<EditText>(R.id.search_input)
 
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
@@ -90,6 +89,51 @@ class HomeActivity : AppCompatActivity() {
             } else {
                 false
             }
+        }
+
+        //Categories scroll View
+        val cat1 = findViewById<LinearLayout>(R.id.concert_layout)
+        val cat2 = findViewById<LinearLayout>(R.id.theater_layout)
+        val cat3 = findViewById<LinearLayout>(R.id.sports_layout)
+        val cat4 = findViewById<LinearLayout>(R.id.festival_layout)
+        val cat5 = findViewById<LinearLayout>(R.id.conference_layout)
+        val cat6 = findViewById<LinearLayout>(R.id.workshop_layout)
+        val cat7 = findViewById<LinearLayout>(R.id.comedy_layout)
+        val cat8 = findViewById<LinearLayout>(R.id.movie_layout)
+        val cat9 = findViewById<LinearLayout>(R.id.exhibition_layout)
+
+        fun catOnClick(query: String){
+            val intent = Intent(this, SearchActivity::class.java)
+            intent.putExtra("query", query)
+            searchEditText.setText(query)
+            startActivity(intent)
+        }
+        cat1.setOnClickListener {
+            catOnClick("concert")
+        }
+        cat2.setOnClickListener {
+            catOnClick("theater")
+        }
+        cat3.setOnClickListener {
+            catOnClick("sports")
+        }
+        cat4.setOnClickListener {
+            catOnClick("festival")
+        }
+        cat5.setOnClickListener {
+            catOnClick("conference")
+        }
+        cat6.setOnClickListener {
+            catOnClick("workshop")
+        }
+        cat7.setOnClickListener {
+            catOnClick("comedy")
+        }
+        cat8.setOnClickListener {
+            catOnClick("movie")
+        }
+        cat9.setOnClickListener {
+            catOnClick("exhibition")
         }
 
     }
@@ -128,7 +172,7 @@ class HomeActivity : AppCompatActivity() {
             .build()
             .create(ApiInterface::class.java)
 
-        val retrofitData = retrofitBuilder.getRecomEvents(recomCategories)
+        val retrofitData = retrofitBuilder.getRecomEvents(AppState.recomCategories)
 
 
         retrofitData.enqueue(object: Callback<List<Event>>{
