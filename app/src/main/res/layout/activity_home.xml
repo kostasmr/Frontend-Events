@@ -83,6 +83,7 @@
                         >
 
                         <LinearLayout
+                            android:id="@+id/concert_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -114,6 +115,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/theater_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -146,6 +148,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/sports_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -178,6 +181,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/festival_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -210,6 +214,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/conference_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -242,6 +247,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/comedy_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -274,6 +280,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/workshop_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -306,6 +313,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/exhibition_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -338,6 +346,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/movie_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
@@ -481,7 +490,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_home" />
+                app:srcCompat="@drawable/ic_home_pink" />
 
             <ImageView
                 android:id="@+id/imageView9"
