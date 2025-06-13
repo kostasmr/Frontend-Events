@@ -59,7 +59,7 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -83,7 +83,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_concert" />
 
             <TextView
                 android:id="@+id/concert"
@@ -117,7 +117,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_theater" />
 
             <TextView
                 android:id="@+id/theater"
@@ -152,7 +152,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_sports" />
 
             <TextView
                 android:id="@+id/sports"
@@ -187,7 +187,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_festival" />
 
             <TextView
                 android:id="@+id/festival"
@@ -222,7 +222,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_conference" />
 
             <TextView
                 android:id="@+id/conference"
@@ -257,7 +257,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_comedy" />
 
             <TextView
                 android:id="@+id/comedy"
@@ -292,7 +292,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_workshop" />
 
             <TextView
                 android:id="@+id/workshop"
@@ -327,7 +327,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_exhibition" />
 
             <TextView
                 android:id="@+id/exhibition"
@@ -362,7 +362,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_books" />
+                app:srcCompat="@drawable/ic_movie" />
 
             <TextView
                 android:id="@+id/movie"
@@ -378,19 +378,6 @@
                 android:textSize="14sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <FrameLayout
-        android:id="@+id/categoryContainer"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-    </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/startBtn"
