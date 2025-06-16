@@ -18,6 +18,7 @@ class Adapter(private var events: List<Event>, private val onItemClick: (Event) 
         val date: TextView = itemView.findViewById(R.id.event_date)
         val location: TextView = itemView.findViewById(R.id.event_location)
         val price: TextView = itemView.findViewById(R.id.event_price)
+        val category: TextView = itemView.findViewById(R.id.event_category)
 
         fun bind(event: Event) {
             itemView.setOnClickListener {
@@ -42,8 +43,8 @@ class Adapter(private var events: List<Event>, private val onItemClick: (Event) 
         holder.title.text = event.title
         holder.date.text = event.schedule[0].date
         holder.location.text = event.schedule[0].location
-//        holder.price.text = (event.ticketTypes[0].price).toString()
         holder.price.text = String.format("$%02d.00", event.ticketTypes[0].price)
+        holder.category.text = event.category.replaceFirstChar { it.uppercaseChar() }
 
         holder.bind(event)
     }
