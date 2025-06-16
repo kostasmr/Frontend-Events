@@ -19,12 +19,14 @@ import com.example.frontend_events.models.Event
 
 class OrderDetailActivity : AppCompatActivity() {
 
+    private lateinit var event: Event
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.order_layout)
 
 
-        val event = intent.getSerializableExtra("event") as Event
+        event = intent.getSerializableExtra("event") as Event
 
         val imageView = findViewById<ImageView>(R.id.imageEventOrder)
         val titleView = findViewById<TextView>(R.id.titleEventOrder)
@@ -100,8 +102,8 @@ class OrderDetailActivity : AppCompatActivity() {
         val backBtn = findViewById<ImageButton>(R.id.backButton)
 
         backBtn.setOnClickListener {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@OrderDetailActivity, EventActivity::class.java)
+            intent.putExtra("event", event)
             startActivity(intent)
             finish()
         }
