@@ -110,7 +110,7 @@ class EventActivity : AppCompatActivity() {
         // chat
 
         val chatBtn = findViewById<ImageView>(R.id.chatBtn)
-        buyBtn.setOnClickListener {
+        chatBtn.setOnClickListener {
             val intent = Intent(this@EventActivity, ChatActivity::class.java)
             intent.putExtra("event", event)
             startActivity(intent)
