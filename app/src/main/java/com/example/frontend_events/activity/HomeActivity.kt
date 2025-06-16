@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,7 +58,7 @@ class HomeActivity : AppCompatActivity() {
         // Load all events
         getMyData { events ->
             if (events.isNotEmpty()) {
-                var popular = listOf(events[0],events[1])
+                var popular = listOf(events[2],events[4], events[5])
                 adapter.updateData(popular)
             } else {
                 Log.d("HomeActivity", "No events received")
@@ -135,6 +136,21 @@ class HomeActivity : AppCompatActivity() {
         cat9.setOnClickListener {
             catOnClick("exhibition")
         }
+
+        // See all on click
+        val see_all = findViewById<TextView>(R.id.see_all)
+        val see_all2 = findViewById<TextView>(R.id.see_all2)
+
+        see_all.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+        see_all2.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
     }
 
