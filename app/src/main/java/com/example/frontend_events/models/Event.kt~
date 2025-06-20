@@ -7,7 +7,6 @@ import java.io.Serializable
 data class Event(
     val __v: Int,
     val _id: String,
-    val eventId: Int,
     val category: String,
     val createdAt: String,
     val description: String,

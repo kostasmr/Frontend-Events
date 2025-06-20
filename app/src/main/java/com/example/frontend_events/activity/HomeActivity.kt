@@ -1,12 +1,12 @@
 package com.example.frontend_events.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,23 +16,35 @@ import com.example.frontend_events.AppState
 import com.example.frontend_events.adapters.RecomAdapter
 import com.example.frontend_events.R
 import com.example.frontend_events.models.Event
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.Serializable
+import android.widget.ImageView
+
 
 const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
 //const val BASE_URL = "http://10.0.2.2:8080/api/"
 
 class HomeActivity : AppCompatActivity() {
 
+    private lateinit var loadingSpinner: ProgressBar
+    private lateinit var retryButton: Button
     private lateinit var recomCategories: ArrayList<String>
 
+
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        loadingSpinner = findViewById(R.id.loadingSpinner)
+        retryButton = findViewById(R.id.retryButton)
+
+        // Retry logic
+        retryButton.setOnClickListener {
+            showLoading()
+            loadAllEvents()
+        }
 
         val popularView = findViewById<RecyclerView>(R.id.popular_list)
         val recomView = findViewById<RecyclerView>(R.id.recom_list)
@@ -55,25 +67,9 @@ class HomeActivity : AppCompatActivity() {
         popularView.adapter = adapter
         recomView.adapter = recomAdapter
 
-        // Load all events
-        getMyData { events ->
-            if (events.isNotEmpty()) {
-                var popular = listOf(events[2],events[4], events[5])
-                adapter.updateData(popular)
-            } else {
-                Log.d("HomeActivity", "No events received")
-            }
-        }
+        showLoading()
+        loadAllEvents()
 
-        // Load recommendation events
-        getMyRecomEvents { recomEvents ->
-            if (recomEvents.isNotEmpty()) {
-                var recom = recomEvents
-                recomAdapter.updateData(recom)
-            } else {
-                Log.d("HomeActivity", "No recommendation events received")
-            }
-        }
 
         // Search Input
         val searchEditText = findViewById<EditText>(R.id.search_input)
@@ -150,8 +146,63 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Find each navigation button by ID
+        val navHome = findViewById<LinearLayout>(R.id.nav_home)
+        val navTicket = findViewById<LinearLayout>(R.id.nav_ticket)
+        val navFavorites = findViewById<LinearLayout>(R.id.nav_favorites)
+        val navProfile = findViewById<LinearLayout>(R.id.nav_profile)
+        val scrollView = findViewById<ScrollView>(R.id.scrollView2)
 
 
+        // Set click listeners
+        navHome.setOnClickListener {
+            scrollView.smoothScrollTo(0, 0)
+            // Already in HomeActivity, maybe just do nothing or scroll to top
+        }
+        navTicket.setOnClickListener {
+            // TODO: Replace with your ticket activity intent if exists
+            // Example:
+            // val intent = Intent(this, TicketActivity::class.java)
+            // startActivity(intent)
+        }
+        // Navigate to Favorites view
+        navFavorites.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+        }
+        // Navigate to Profile view
+        navProfile.setOnClickListener {
+//            val intent = Intent(this, ProfileActivity::class.java)
+//            startActivity(intent)
+        }
+    }
+
+    // Load all events
+    private fun loadAllEvents() {
+        getMyData { events ->
+            val popularView = findViewById<RecyclerView>(R.id.popular_list)
+            val adapter = popularView.adapter as Adapter
+
+            if (events.isNotEmpty()) {
+                val popular = listOf(events[2], events[4], events[5])
+                adapter.updateData(popular)
+            } else {
+                Log.d("HomeActivity", "No events received")
+            }
+        }
+
+        getMyRecomEvents { recomEvents ->
+            val recomView = findViewById<RecyclerView>(R.id.recom_list)
+            val recomAdapter = recomView.adapter as RecomAdapter
+
+            if (recomEvents.isNotEmpty()) {
+                recomAdapter.updateData(recomEvents)
+                hideLoading()
+            } else {
+                Log.d("HomeActivity", "No recommendation events received")
+                showRetry()
+            }
+        }
     }
 
     fun getMyData(onResult: (List<Event>) -> Unit){
@@ -207,6 +258,22 @@ class HomeActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun showLoading() {
+        loadingSpinner.visibility = View.VISIBLE
+        retryButton.visibility = View.GONE
+    }
+
+    private fun hideLoading() {
+        loadingSpinner.visibility = View.GONE
+        retryButton.visibility = View.GONE
+    }
+
+    private fun showRetry() {
+        loadingSpinner.visibility = View.GONE
+        retryButton.visibility = View.VISIBLE
+    }
+
 }
 
 

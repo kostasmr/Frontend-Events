@@ -2,16 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/eventBtn"
+    android:id="@+id/favoriteItemLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/main_shape"
     android:layout_marginBottom="10dp"
-    >
+    android:background="@drawable/main_shape">
 
+    <!-- Event Image -->
     <ImageView
-        android:id="@+id/search_image"
+        android:id="@+id/fav_event_image"
         android:layout_width="91dp"
         android:layout_height="91dp"
         android:layout_marginStart="10dp"
@@ -20,31 +19,31 @@
         android:background="@drawable/recom_images"
         android:clipToOutline="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_recom1"
+        android:src="@drawable/img_fav1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Title -->
     <TextView
-        android:id="@+id/search_title"
+        android:id="@+id/fav_event_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_margin="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_weight="1"
         android:ellipsize="end"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center_vertical"
         android:maxLines="2"
-        android:text="Dance party at the top of the town - 2022"
+        android:text="Event Title Placeholder"
         android:textColor="@color/txt_color1"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toEndOf="@+id/search_image"
+        app:layout_constraintStart_toEndOf="@id/fav_event_image"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Inner layout: location and price -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -53,42 +52,36 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_image">
+        app:layout_constraintStart_toEndOf="@id/fav_event_image">
 
+        <!-- Location -->
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/locationLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imgConcert"
+                android:id="@+id/locationIcon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_weight="1"
                 app:srcCompat="@drawable/location" />
 
             <TextView
-                android:id="@+id/search_location"
+                android:id="@+id/fav_event_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="6dp"
                 android:fontFamily="@font/poppins"
-                android:gravity="center_vertical"
-                android:text="Thessaloniki"
+                android:text="Location"
                 android:textColor="@color/txt_color2"
                 android:textSize="12sp" />
-
         </LinearLayout>
 
+        <!-- Price -->
         <TextView
-            android:id="@+id/recom_price"
+            android:id="@+id/fav_event_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/price_shape"
@@ -97,10 +90,9 @@
             android:paddingVertical="6dp"
             android:text="$10.00"
             android:textColor="@color/btn_color2"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

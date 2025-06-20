@@ -5,10 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.frontend_events.ApiInterface
 import com.example.frontend_events.R
+import com.example.frontend_events.activity.BASE_URL
 import com.example.frontend_events.models.Event
+import okhttp3.ResponseBody
+import retrofit2.*
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 class RecomAdapter(private var events: List<Event>, private val onItemClick: (Event) -> Unit) : RecyclerView.Adapter<RecomAdapter.RecomViewHolder>() {
 
@@ -22,8 +29,11 @@ class RecomAdapter(private var events: List<Event>, private val onItemClick: (Ev
             itemView.setOnClickListener {
                 onItemClick(event)
             }
+
+
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecomViewHolder {
         val view = LayoutInflater.from(parent.context)
