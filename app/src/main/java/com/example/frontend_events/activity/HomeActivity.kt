@@ -157,13 +157,10 @@ class HomeActivity : AppCompatActivity() {
         // Set click listeners
         navHome.setOnClickListener {
             scrollView.smoothScrollTo(0, 0)
-            // Already in HomeActivity, maybe just do nothing or scroll to top
         }
         navTicket.setOnClickListener {
-            // TODO: Replace with your ticket activity intent if exists
-            // Example:
-            // val intent = Intent(this, TicketActivity::class.java)
-            // startActivity(intent)
+            val intent = Intent(this, TicketActivity::class.java)
+            startActivity(intent)
         }
         // Navigate to Favorites view
         navFavorites.setOnClickListener {
@@ -172,8 +169,8 @@ class HomeActivity : AppCompatActivity() {
         }
         // Navigate to Profile view
         navProfile.setOnClickListener {
-//            val intent = Intent(this, ProfileActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 

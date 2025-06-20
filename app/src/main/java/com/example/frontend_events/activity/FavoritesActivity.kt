@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
-import android.widget.ScrollView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +43,6 @@ class FavoritesActivity : AppCompatActivity() {
         val navTicket = findViewById<LinearLayout>(R.id.nav_ticket)
         val navFavorites = findViewById<LinearLayout>(R.id.nav_favorites)
         val navProfile = findViewById<LinearLayout>(R.id.nav_profile)
-        val scrollView = findViewById<ScrollView>(R.id.scrollView2)
 
 
         // Set click listeners
@@ -53,10 +51,8 @@ class FavoritesActivity : AppCompatActivity() {
             startActivity(intent)
         }
         navTicket.setOnClickListener {
-            // TODO: Replace with your ticket activity intent if exists
-            // Example:
-            // val intent = Intent(this, TicketActivity::class.java)
-            // startActivity(intent)
+            val intent = Intent(this, TicketActivity::class.java)
+            startActivity(intent)
         }
         // Navigate to Favorites view
         navFavorites.setOnClickListener {
@@ -65,8 +61,8 @@ class FavoritesActivity : AppCompatActivity() {
         }
         // Navigate to Profile view
         navProfile.setOnClickListener {
-//            val intent = Intent(this, ProfileActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 

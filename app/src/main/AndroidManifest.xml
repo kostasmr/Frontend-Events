@@ -19,6 +19,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrontendEvents"
         tools:targetApi="31">
+        <activity android:name=".activity.ProfileActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.TicketActivity"
+            android:exported="false"/>
         <activity android:name=".activity.FavoritesActivity"
             android:exported="false" />
         <activity
