@@ -29,8 +29,8 @@
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event Title"
             android:fontFamily="@font/poppins_bold"
+            android:text="Event Title"
             android:textSize="18sp" />
 
         <TextView
