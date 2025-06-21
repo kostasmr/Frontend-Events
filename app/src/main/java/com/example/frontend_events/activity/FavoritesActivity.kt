@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,31 +39,27 @@ class FavoritesActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         fetchFavorites()
 
-        // Find each navigation button by ID
-        val navHome = findViewById<LinearLayout>(R.id.nav_home)
-        val navTicket = findViewById<LinearLayout>(R.id.nav_ticket)
-        val navFavorites = findViewById<LinearLayout>(R.id.nav_favorites)
-        val navProfile = findViewById<LinearLayout>(R.id.nav_profile)
+        // menu bar
+        val homeBtn = findViewById<ImageView>(R.id.homeBtn)
+        val ticketsBtn = findViewById<ImageView>(R.id.ticketsBtn)
+        val profileBtn = findViewById<ImageView>(R.id.profileBtn)
 
-
-        // Set click listeners
-        navHome.setOnClickListener {
+        homeBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish() // optional: κλείνει το τρέχον activity
         }
-        navTicket.setOnClickListener {
-            val intent = Intent(this, TicketActivity::class.java)
-            startActivity(intent)
-        }
-        // Navigate to Favorites view
-        navFavorites.setOnClickListener {
-            val intent = Intent(this, FavoritesActivity::class.java)
-            startActivity(intent)
-        }
-        // Navigate to Profile view
-        navProfile.setOnClickListener {
+
+        profileBtn.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+            finish()
+        }
+
+        ticketsBtn.setOnClickListener {
+            val intent = Intent(this, TicketListActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
