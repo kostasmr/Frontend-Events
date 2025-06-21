@@ -57,7 +57,7 @@
                     android:id="@+id/group_image"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/chat_image_shape"
+                    android:background="@drawable/cycle_image_shape"
                     android:clipToOutline="true"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"

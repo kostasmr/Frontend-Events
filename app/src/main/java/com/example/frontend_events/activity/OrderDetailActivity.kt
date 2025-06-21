@@ -2,6 +2,7 @@ package com.example.frontend_events.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,20 +14,23 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.bumptech.glide.Glide
 import com.example.frontend_events.R
 import com.example.frontend_events.models.Event
+import com.example.frontend_events.models.TicketOrder
+
 
 class OrderDetailActivity : AppCompatActivity() {
-
-    private lateinit var event: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.order_layout)
 
 
-        event = intent.getSerializableExtra("event") as Event
+        val event = intent.getSerializableExtra("event") as Event
+        var ticketDetails = intent.getSerializableExtra("ticketOrderInfo") as? TicketOrder
+
 
         val imageView = findViewById<ImageView>(R.id.imageEventOrder)
         val titleView = findViewById<TextView>(R.id.titleEventOrder)
@@ -59,7 +63,7 @@ class OrderDetailActivity : AppCompatActivity() {
 
 
         // Συνδέσεις στοιχείων
-        val placeOrderButton = findViewById<Button>(R.id.placeOrderButton)
+        val placeOrderButton = findViewById<AppCompatButton>(R.id.placeOrderButton)
         val radioCard = findViewById<RadioButton>(R.id.radioCard)
         val radioPaypal = findViewById<RadioButton>(R.id.radioPaypal)
 
@@ -103,7 +107,6 @@ class OrderDetailActivity : AppCompatActivity() {
 
         backBtn.setOnClickListener {
             val intent = Intent(this@OrderDetailActivity, EventActivity::class.java)
-            intent.putExtra("event", event)
             startActivity(intent)
             finish()
         }
@@ -155,9 +158,30 @@ class OrderDetailActivity : AppCompatActivity() {
 
         // Παράδειγμα ενεργειών στο "Place Order"
         placeOrderButton.setOnClickListener {
-            val intent = Intent(this@OrderDetailActivity, SearchActivity::class.java)
-            startActivity(intent)
-            finish() // Προαιρετικά: κλείνει την τρέχουσα Activity
+            if (radioCard.isChecked) {
+                val intent = Intent(this@OrderDetailActivity, AddCardActivity::class.java)
+                if (ticketDetails != null) {
+                    ticketDetails.paymentMethod = "Credit Card"
+                    ticketDetails.numberOfTickets = spinner.selectedItem.toString().toInt()
+                    ticketDetails.price = finalvalue.text.toString()
+                    ticketDetails.discountCategory = discountSpinner.selectedItem.toString()
+                }
+                intent.putExtra("ticketOrderInfo", ticketDetails)
+                startActivity(intent)
+            } else if (radioPaypal.isChecked) {
+                val intent = Intent(this@OrderDetailActivity, PaypalActivity::class.java)
+                if (ticketDetails != null) {
+                    ticketDetails.paymentMethod = "Paypal"
+                    ticketDetails.numberOfTickets = spinner.selectedItem.toString().toInt()
+                    ticketDetails.price = finalvalue.text.toString()
+                    ticketDetails.discountCategory = discountSpinner.selectedItem.toString()
+                }
+                intent.putExtra("ticketOrderInfo", ticketDetails)
+
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Please select a payment method.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

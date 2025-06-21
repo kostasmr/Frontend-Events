@@ -475,9 +475,8 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- Bottom Navigation -->
         <LinearLayout
-            android:id="@+id/bottom_navigation"
+            android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_alignParentBottom="true"
@@ -490,11 +489,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <!-- Home Icon -->
-            <LinearLayout
-                android:id="@+id/nav_home"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <ImageView
+                android:id="@+id/homeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:gravity="top|center_horizontal"
@@ -502,18 +500,19 @@
                 android:focusable="true"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imgConcert"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_home_pink" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/ticketsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_ticket" />
 
-            <!-- Ticket Icon -->
-            <LinearLayout
-                android:id="@+id/nav_ticket"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <ImageView
+                android:id="@+id/favoritesBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:gravity="top|center_horizontal"
@@ -521,50 +520,12 @@
                 android:focusable="true"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_ticket" />
-            </LinearLayout>
-
-            <!-- Favorite Icon (active) -->
-            <LinearLayout
-                android:id="@+id/nav_favorites"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+            <ImageView
+                android:id="@+id/profileBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:gravity="top|center_horizontal"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_heart"/>
-            </LinearLayout>
-
-            <!-- Profile Icon -->
-            <LinearLayout
-                android:id="@+id/nav_profile"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:gravity="top|center_horizontal"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView10"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_user" />
-            </LinearLayout>
+                app:srcCompat="@drawable/ic_user" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

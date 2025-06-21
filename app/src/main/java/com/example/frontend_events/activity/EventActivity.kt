@@ -21,12 +21,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 
+import com.example.frontend_events.models.TicketOrder //type of ticket order
 
 
 class EventActivity : AppCompatActivity() {
 
     private lateinit var map: MapView
-
     // Replace with your coordinates
     val lat = 37.9838
     val lng = 23.7275
@@ -40,6 +40,8 @@ class EventActivity : AppCompatActivity() {
         //dates
         val event = intent.getSerializableExtra("event") as Event
         isFavorited = event.favorited
+        var ticketDetails = intent.getSerializableExtra("ticketOrderInfo") as? TicketOrder //details od ticket order
+
 
         val imageView = findViewById<ImageView>(R.id.imageView)
         val titleView = findViewById<TextView>(R.id.title_details)
@@ -111,6 +113,21 @@ class EventActivity : AppCompatActivity() {
         val origin = intent.getStringExtra("origin")
         val query = intent.getStringExtra("query")
 
+        //ticketorder details
+
+        ticketDetails = TicketOrder(
+            title = event.title,
+            description = event.description,
+            image = event.image,
+            location = event.schedule[0].location,
+            price = String.format("$%02d.00", event.ticketTypes[0].price),
+            paymentMethod = "",
+            purchaserName = "",
+            numberOfTickets = 1,
+            discountCategory = ""
+        )
+
+
         btn.setOnClickListener {
             when (origin) {
                 "search" -> {
@@ -118,7 +135,6 @@ class EventActivity : AppCompatActivity() {
                     intent.putExtra("query", query)
                     startActivity(intent)
                 }
-
                 else -> {
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
@@ -131,6 +147,7 @@ class EventActivity : AppCompatActivity() {
         buyBtn.setOnClickListener {
             val intent = Intent(this@EventActivity, OrderDetailActivity::class.java)
             intent.putExtra("event", event)
+            intent.putExtra("ticketOrderInfo", ticketDetails)
             startActivity(intent)
         }
 

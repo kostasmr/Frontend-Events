@@ -6,6 +6,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+//<<<<<<< HEAD
+import android.widget.ImageButton
+//=======
+//>>>>>>> 956b5996811a3644f0f3cd5b95f958b20cb8050f
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,6 +53,16 @@ class HomeActivity : AppCompatActivity() {
             showLoading()
             loadAllEvents()
         }
+
+
+        //menu bar
+        val profile = findViewById<ImageView>(R.id.profileBtn)
+
+        profile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val popularView = findViewById<RecyclerView>(R.id.popular_list)
         val recomView = findViewById<RecyclerView>(R.id.recom_list)
@@ -146,6 +164,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val ticketButton = findViewById<ImageView>(R.id.ticketsBtn)
+        ticketButton.setOnClickListener {
+            val intent = Intent(this, TicketListActivity::class.java)
+            startActivity(intent)
+        }
         // Find each navigation button by ID
         val navHome = findViewById<LinearLayout>(R.id.nav_home)
         val navTicket = findViewById<LinearLayout>(R.id.nav_ticket)
