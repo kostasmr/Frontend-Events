@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +19,10 @@ class TicketListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ticket_list)
-        val goHomeButton = findViewById<Button>(R.id.goHomeButton)
+        val homeBtn = findViewById<ImageView>(R.id.homeBtn)
+        val favoritesBtn = findViewById<ImageView>(R.id.favoritesBtn)
+        val profileBtn = findViewById<ImageView>(R.id.profileBtn)
+
 
         // Παίρνουμε τη λίστα εισιτηρίων (mock ή πραγματική)
         val ticketList: List<TicketOrder> = TicketListTrack.getAllTickets()
@@ -28,10 +32,16 @@ class TicketListActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = TicketAdapter(ticketList)
 
-        goHomeButton.setOnClickListener {
+        homeBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish() // optional: κλείνει το τρέχον activity
+        }
+
+        profileBtn.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
 
