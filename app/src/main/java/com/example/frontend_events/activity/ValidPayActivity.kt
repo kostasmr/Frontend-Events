@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.example.frontend_events.R
 
 class ValidPayActivity : AppCompatActivity() {
@@ -12,15 +13,8 @@ class ValidPayActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.validpay_layout)
 
-        val viewTicketButton = findViewById<Button>(R.id.btn_view_ticket)
-        val goHomeButton = findViewById<Button>(R.id.btn_go_home)
-        val btnViewTicket = findViewById<Button>(R.id.btn_view_ticket)
-
-        viewTicketButton.setOnClickListener {
-            // Άνοιξε E-Ticket (π.χ. άλλη Activity)
-            //val intent = Intent(this, TicketActivity::class.java)
-            //startActivity(intent)
-        }
+        val viewTicketButton = findViewById<AppCompatButton>(R.id.btn_view_ticket)
+        val goHomeButton = findViewById<AppCompatButton>(R.id.btn_go_home)
 
         goHomeButton.setOnClickListener {
             // Πήγαινε στην αρχική οθόνη
@@ -29,7 +23,7 @@ class ValidPayActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        btnViewTicket.setOnClickListener {
+        viewTicketButton.setOnClickListener {
             val intent = Intent(this, TicketListActivity::class.java)
             startActivity(intent)
         }
