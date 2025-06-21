@@ -11,11 +11,13 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/events_logo" />
+        app:srcCompat="@drawable/tickest_logo" />
 
     <TextView
         android:id="@+id/textView5"
