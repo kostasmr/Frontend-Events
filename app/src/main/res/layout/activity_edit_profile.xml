@@ -115,7 +115,7 @@
         android:background="@drawable/add_photo_shape"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="Add some infos for your profile"
+        android:hint="Write something for you..."
         android:imeOptions="actionSearch"
         android:inputType="text"
         android:padding="20dp"
