@@ -9,25 +9,52 @@
         android:id="@+id/ticketRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/goHomeButton"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/goHomeButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:fontFamily="@font/poppins"
-        android:textSize="16dp"
-        android:text="Go Home"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textAllCaps="false"
-        android:backgroundTint="@color/pink"
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_home" />
+
+        <ImageView
+            android:id="@+id/ticketsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_ticket_pink" />
+
+        <ImageView
+            android:id="@+id/favoritesBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_heart" />
+
+        <ImageView
+            android:id="@+id/profileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_user" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
