@@ -8,7 +8,7 @@
     <style name="Theme.FrontendEvents" parent="Base.Theme.FrontendEvents" />
     <style name="Theme.FrontendEvents.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/events_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_shape</item>
         <item name="postSplashScreenTheme">@style/Base.Theme.FrontendEvents</item>
     </style>
 
