@@ -16,19 +16,18 @@
         android:gravity="center_horizontal">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/ic_check_circle"
-            android:tint="#4CAF50" />
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:src="@drawable/ic_checked2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Congratulations!"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="25sp"
             android:layout_marginTop="16dp"
-            android:textColor="#000000" />
+            android:fontFamily="@font/poppins_bold"
+            android:text="Congratulations!"
+            android:textColor="@color/txt_color1"
+            android:textSize="25sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,29 +36,29 @@
             android:textAlignment="center"
             android:fontFamily="@font/poppins"
             android:textSize="22sp"
-            android:textColor="#666666"
+            android:textColor="@color/txt_color2"
             android:layout_marginTop="8dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_view_ticket"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View E-Ticket"
-            android:fontFamily="@font/poppins"
+            android:layout_height="56dp"
             android:layout_marginTop="24dp"
-            android:textStyle="bold"
-            android:backgroundTint="#FF00B8"
-            android:textColor="#FFFFFF" />
+            android:background="@drawable/main_button"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:text="View E-Ticket"
+            android:textColor="@color/white" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_go_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:text="Go to Home"
+            android:background="@drawable/add_photo_shape"
             android:fontFamily="@font/poppins"
+            android:textAllCaps="false"
             android:layout_marginTop="12dp"
-            android:textStyle="bold"
-            android:backgroundTint="#FF00B8"
-            android:textColor="#FFFFFF"  />
+            android:textColor="@color/btn_color2"  />
     </LinearLayout>
 </LinearLayout>
