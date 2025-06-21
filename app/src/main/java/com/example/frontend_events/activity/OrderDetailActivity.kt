@@ -107,6 +107,7 @@ class OrderDetailActivity : AppCompatActivity() {
 
         backBtn.setOnClickListener {
             val intent = Intent(this@OrderDetailActivity, EventActivity::class.java)
+            intent.putExtra("event", event)
             startActivity(intent)
             finish()
         }
