@@ -7,13 +7,6 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-//<<<<<<< HEAD
-import android.widget.ImageButton
-//=======
-//>>>>>>> 956b5996811a3644f0f3cd5b95f958b20cb8050f
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,15 +23,14 @@ import java.io.Serializable
 import android.widget.ImageView
 
 
-const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
-//const val BASE_URL = "http://10.0.2.2:8080/api/"
+//const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
+const val BASE_URL = "http://10.0.2.2:8080/api/"
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var loadingSpinner: ProgressBar
     private lateinit var retryButton: Button
     private lateinit var recomCategories: ArrayList<String>
-
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +49,18 @@ class HomeActivity : AppCompatActivity() {
 
         //menu bar
         val profile = findViewById<ImageView>(R.id.profileBtn)
+        val ticketButton = findViewById<ImageView>(R.id.ticketsBtn)
+        val favoritesBtn = findViewById<ImageView>(R.id.favoritesBtn)
+
+        ticketButton.setOnClickListener {
+            val intent = Intent(this, TicketListActivity::class.java)
+            startActivity(intent)
+        }
+
+        favoritesBtn.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+        }
 
         profile.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
@@ -161,38 +165,6 @@ class HomeActivity : AppCompatActivity() {
         }
         see_all2.setOnClickListener {
             val intent = Intent(this, SearchActivity::class.java)
-            startActivity(intent)
-        }
-
-        val ticketButton = findViewById<ImageView>(R.id.ticketsBtn)
-        ticketButton.setOnClickListener {
-            val intent = Intent(this, TicketListActivity::class.java)
-            startActivity(intent)
-        }
-        // Find each navigation button by ID
-        val navHome = findViewById<LinearLayout>(R.id.nav_home)
-        val navTicket = findViewById<LinearLayout>(R.id.nav_ticket)
-        val navFavorites = findViewById<LinearLayout>(R.id.nav_favorites)
-        val navProfile = findViewById<LinearLayout>(R.id.nav_profile)
-        val scrollView = findViewById<ScrollView>(R.id.scrollView2)
-
-
-        // Set click listeners
-        navHome.setOnClickListener {
-            scrollView.smoothScrollTo(0, 0)
-        }
-        navTicket.setOnClickListener {
-            val intent = Intent(this, TicketActivity::class.java)
-            startActivity(intent)
-        }
-        // Navigate to Favorites view
-        navFavorites.setOnClickListener {
-            val intent = Intent(this, FavoritesActivity::class.java)
-            startActivity(intent)
-        }
-        // Navigate to Profile view
-        navProfile.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }
