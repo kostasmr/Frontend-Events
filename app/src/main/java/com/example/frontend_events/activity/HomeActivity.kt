@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import android.widget.ImageButton
-=======
->>>>>>> 956b5996811a3644f0f3cd5b95f958b20cb8050f
+//=======
+//>>>>>>> 956b5996811a3644f0f3cd5b95f958b20cb8050f
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
