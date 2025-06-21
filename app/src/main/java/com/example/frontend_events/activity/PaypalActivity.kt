@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.example.frontend_events.R
 import com.example.frontend_events.adapters.TicketListTrack
 import com.example.frontend_events.models.TicketOrder
@@ -22,7 +23,7 @@ class PaypalActivity : AppCompatActivity() {
 
         val emailField = findViewById<EditText>(R.id.emailField)
         val nameField = findViewById<EditText>(R.id.nameField)
-        val nextButton = findViewById<Button>(R.id.nextButton)
+        val nextButton = findViewById<AppCompatButton>(R.id.nextButton)
 
         nextButton.setOnClickListener {
             val email = emailField.text.toString().trim()
