@@ -479,12 +479,9 @@
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
+            android:background="@color/white"
             android:orientation="horizontal"
-            android:background="#FFFFFF"
-            android:weightSum="4"
-            android:padding="8dp"
-            android:elevation="8dp"
+            android:padding="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -494,19 +491,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:gravity="top|center_horizontal"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical">
+                app:srcCompat="@drawable/ic_home_pink" />
 
             <ImageView
                 android:id="@+id/ticketsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
                 app:srcCompat="@drawable/ic_ticket" />
 
             <ImageView
@@ -514,11 +505,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:gravity="top|center_horizontal"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical">
+                app:srcCompat="@drawable/ic_heart" />
 
             <ImageView
                 android:id="@+id/profileBtn"
