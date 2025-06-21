@@ -137,7 +137,7 @@
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:src="@drawable/popular2" />
 
                 <ImageView
                     android:id="@+id/imageView30"
@@ -148,7 +148,7 @@
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:src="@drawable/img_recom1" />
 
                 <ImageView
                     android:id="@+id/imageView28"
@@ -160,7 +160,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/imageView29"
                     app:layout_constraintStart_toEndOf="@+id/imageView30"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:src="@drawable/img_onboarding1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -171,7 +171,7 @@
 
                 <ImageView
                     android:id="@+id/imageView31"
-                    android:layout_width="110dp"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:background="@drawable/recom_images"
                     android:clipToOutline="true"
@@ -180,7 +180,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:src="@drawable/img_onboarding6" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton
