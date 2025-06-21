@@ -94,6 +94,13 @@ class SignupActivity : AppCompatActivity() {
                 if (createdUser != null) {
                     onResult(createdUser)
                 } else {
+                    if (response.code() == 409) {
+                        // Show Toast for username already exists
+                        Toast.makeText(this@SignupActivity, "Username already exists", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Generic error
+                        Toast.makeText(this@SignupActivity, "Error: ${response.errorBody()?.string()}", Toast.LENGTH_SHORT).show()
+                    }
                     Log.d("SignupActivity", "User creation failed: ${response.errorBody()?.string()}")
                 }
             }
