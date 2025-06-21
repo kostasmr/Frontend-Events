@@ -14,6 +14,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.bumptech.glide.Glide
 import com.example.frontend_events.R
 import com.example.frontend_events.models.Event
@@ -62,7 +63,7 @@ class OrderDetailActivity : AppCompatActivity() {
 
 
         // Συνδέσεις στοιχείων
-        val placeOrderButton = findViewById<Button>(R.id.placeOrderButton)
+        val placeOrderButton = findViewById<AppCompatButton>(R.id.placeOrderButton)
         val radioCard = findViewById<RadioButton>(R.id.radioCard)
         val radioPaypal = findViewById<RadioButton>(R.id.radioPaypal)
 
@@ -105,7 +106,6 @@ class OrderDetailActivity : AppCompatActivity() {
         val backBtn = findViewById<ImageButton>(R.id.backButton)
 
         backBtn.setOnClickListener {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@OrderDetailActivity, EventActivity::class.java)
             startActivity(intent)
             finish()
