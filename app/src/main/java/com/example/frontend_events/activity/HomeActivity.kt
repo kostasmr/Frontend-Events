@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+<<<<<<< HEAD
 import android.widget.ImageButton
+=======
+>>>>>>> 956b5996811a3644f0f3cd5b95f958b20cb8050f
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -25,8 +28,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.Serializable
 
-const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
-//const val BASE_URL = "http://10.0.2.2:8080/api/"
+//const val BASE_URL = "https://eventapp-backend-c8xe.onrender.com/api/"
+const val BASE_URL = "http://10.0.2.2:8080/api/"
 
 class HomeActivity : AppCompatActivity() {
 
@@ -35,6 +38,16 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+
+        //menu bar
+        val profile = findViewById<ImageView>(R.id.profileBtn)
+
+        profile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val popularView = findViewById<RecyclerView>(R.id.popular_list)
         val recomView = findViewById<RecyclerView>(R.id.recom_list)
@@ -152,7 +165,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val ticketButton = findViewById<ImageView>(R.id.imageView9)
+        val ticketButton = findViewById<ImageView>(R.id.ticketsBtn)
         ticketButton.setOnClickListener {
             val intent = Intent(this, TicketListActivity::class.java)
             startActivity(intent)

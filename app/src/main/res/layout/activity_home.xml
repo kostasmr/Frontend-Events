@@ -486,14 +486,14 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:id="@+id/imgConcert"
+                android:id="@+id/homeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_home_pink" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/ticketsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
@@ -502,14 +502,14 @@
                 app:srcCompat="@drawable/ic_ticket" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/favoritesBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/ic_heart" />
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/profileBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"
