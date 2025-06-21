@@ -91,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                 if (loggedInUser != null) {
                     onResult(loggedInUser)
                 } else {
+                    Toast.makeText(this@LoginActivity, "False credentials", Toast.LENGTH_SHORT).show()
                     Log.d("LoginActivity", "Login failed: ${response.errorBody()?.string()}")
                 }
             }
