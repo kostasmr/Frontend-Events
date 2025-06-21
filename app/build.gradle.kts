@@ -52,5 +52,6 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("org.osmdroid:osmdroid-android:6.1.14")
+    implementation("com.google.zxing:core:3.5.2")
 
 }

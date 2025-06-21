@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -150,7 +152,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
+        val ticketButton = findViewById<ImageView>(R.id.imageView9)
+        ticketButton.setOnClickListener {
+            val intent = Intent(this, TicketListActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

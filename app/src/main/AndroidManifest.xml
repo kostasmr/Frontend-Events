@@ -48,6 +48,11 @@
             android:name=".activity.OrderDetailActivity"
             android:exported="false" />
 
+        <activity android:name=".activity.ValidPayActivity" />
+        <activity android:name=".activity.AddCardActivity"/>
+        <activity android:name=".activity.PaypalActivity"/>
+        <activity android:name=".activity.TicketListActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

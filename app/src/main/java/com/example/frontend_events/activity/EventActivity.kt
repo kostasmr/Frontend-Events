@@ -14,6 +14,7 @@ import org.osmdroid.views.MapView
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
 import android.net.Uri
+import com.example.frontend_events.models.TicketOrder //type of ticket order
 
 
 class EventActivity : AppCompatActivity() {
@@ -28,6 +29,8 @@ class EventActivity : AppCompatActivity() {
         setContentView(R.layout.activity_event)
     //dates
         val event = intent.getSerializableExtra("event") as Event
+        var ticketDetails = intent.getSerializableExtra("ticketOrderInfo") as? TicketOrder //details od ticket order
+
 
         val imageView = findViewById<ImageView>(R.id.imageView)
         val titleView = findViewById<TextView>(R.id.title_details)
@@ -51,6 +54,21 @@ class EventActivity : AppCompatActivity() {
         val origin = intent.getStringExtra("origin")
         val query = intent.getStringExtra("query")
 
+        //ticketorder details
+
+        ticketDetails = TicketOrder(
+            title = event.title,
+            description = event.description,
+            image = event.image,
+            location = event.schedule[0].location,
+            price = String.format("$%02d.00", event.ticketTypes[0].price),
+            paymentMethod = "",
+            purchaserName = "",
+            numberOfTickets = 1,
+            discountCategory = ""
+        )
+
+
         btn.setOnClickListener {
             when (origin) {
                 "search" -> {
@@ -70,6 +88,7 @@ class EventActivity : AppCompatActivity() {
         buyBtn.setOnClickListener {
             val intent = Intent(this@EventActivity, OrderDetailActivity::class.java)
             intent.putExtra("event", event)
+            intent.putExtra("ticketOrderInfo", ticketDetails)
             startActivity(intent)
         }
 
