@@ -38,6 +38,11 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        favoritesBtn.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val editBtn = findViewById<AppCompatButton>(R.id.editBtn)
 
