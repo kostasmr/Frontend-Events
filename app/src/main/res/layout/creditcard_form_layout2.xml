@@ -82,13 +82,14 @@
             android:textSize="20sp"
             android:layout_marginBottom="24dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_buy_ticket"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:text="Buy Ticket"
+            android:textAllCaps="false"
             android:fontFamily="@font/poppins"
-            android:backgroundTint="#FF00B8"
+            android:background="@drawable/main_button"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>
