@@ -44,6 +44,12 @@ class TicketListActivity : AppCompatActivity() {
             finish()
         }
 
+        favoritesBtn.setOnClickListener {
+            val intent = Intent(this, FavoritesActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
     }
 }
