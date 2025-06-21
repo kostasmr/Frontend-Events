@@ -13,7 +13,7 @@ import com.example.frontend_events.models.Event
 class FavoritesAdapter(
     private var favoriteEvents: List<Event>,
     private val onItemClick: (Event) -> Unit
-) : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
+    ) : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
     inner class FavoritesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.fav_event_image)
