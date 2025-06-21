@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="20dp"
         android:paddingHorizontal="16dp">
 
@@ -21,9 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_bold"
-            android:text="Favourite"
+            android:text="Favourites"
             android:textColor="@color/txt_color1"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="normal" />
 
     </RelativeLayout>
