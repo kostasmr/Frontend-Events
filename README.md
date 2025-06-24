@@ -1,8 +1,6 @@
 
 ![Tickest](app/src/main/res/drawable/tickest_promo_repo.png)
 
-<br>
-
 ## 📱 About Tickest
 
 **Tickest** is a modern Android mobile application developed for seamless event booking experiences. Whether it's concerts, theater, or sports events, Tickest lets users discover, book, and manage tickets directly from their phones. Built during a bootcamp project by a team of three, we collaborated using the **Scrum methodology** and followed a design-first approach based on **Figma mockups**.
@@ -17,14 +15,9 @@
   - Hosted on Render
 - **Database**: MongoDB
 
-### 🎯 Project Goals
+## 🔗 Backend Repository
 
-- Enable secure **user authentication** (login/sign up).
-- Allow users to **search and discover events** based on category.
-- Offer **personalized recommendations**.
-- Display **detailed event views** with all necessary info.
-- Allow **ticket purchases** and management.
-- Provide user **profile viewing and editing**.
+You can find the backend API code here: [Tickest Backend](https://github.com/EfstratiaGe/eventApp-backend)
 
 ## ✨ Features
 
@@ -39,12 +32,6 @@
 ## 🎥 Demo Video
 
 Watch the demonstration video of Tickest in action:
-
-
-## 🔗 Backend Repository
-
-You can find the backend API code here: [Tickest Backend](https://github.com/EfstratiaGe/eventApp-backend)
-
 
 ## 🔄 Development Process
 
