@@ -1,6 +1,10 @@
 
 # Tickest – Event Booking Android App
 
+<br>
+![Tickest](res/drawable/tickest_promo_repo.png)
+<br>
+
 ## 📱 About Tickest
 
 **Tickest** is a modern Android mobile application developed for seamless event booking experiences. Whether it's concerts, theater, or sports events, Tickest lets users discover, book, and manage tickets directly from their phones. Built during a bootcamp project by a team of three, we collaborated using the **Scrum methodology** and followed a design-first approach based on **Figma mockups**.
