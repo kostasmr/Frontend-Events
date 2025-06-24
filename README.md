@@ -31,7 +31,7 @@ You can find the backend API code here: [Tickest Backend](https://github.com/Efs
 
 ## 🎥 Demo Video
 
-Watch the demonstration video of Tickest in action:
+Watch the demonstration video of Tickest in action: [Watch Video](https://vimeo.com/1095895759/18d52248d9)
 
 ## 🔄 Development Process
 
