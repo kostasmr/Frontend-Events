@@ -2,7 +2,7 @@
 # Tickest – Event Booking Android App
 
 <br>
-![Tickest](res/drawable/tickest_promo_repo.png)
+![Tickest](app/src/main/res/drawable/tickest_promo_repo.png)
 <br>
 
 ## 📱 About Tickest
